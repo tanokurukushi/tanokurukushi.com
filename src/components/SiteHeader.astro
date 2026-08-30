@@ -1,0 +1,33 @@
+---
+const links = [
+  { href: '/', label: 'Index' },
+  { href: '/tags', label: 'Tags' },
+];
+---
+
+<header class="flex items-center justify-between border-b border-accent py-5">
+  <div class="flex items-baseline gap-px font-mono">
+    <span class="text-lg font-bold tracking-tight">TanokuRukushi</span>
+    <span class="cursor text-accent" aria-hidden="true">|</span>
+  </div>
+  <nav class="flex gap-5 font-mono text-sm uppercase">
+    {links.map(({ href, label }) => <a href={href}>{label}</a>)}
+  </nav>
+</header>
+
+<style>
+  .cursor {
+    animation: blink 1.25s infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

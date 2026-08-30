@@ -1,0 +1,19 @@
+---
+const snsLinks = [
+  { href: 'https://x.com/tanokurukushi', label: 'X(Twitter)' },
+  { href: 'https://github.com/tanokurukushi', label: 'GitHub' },
+];
+---
+
+<footer class="flex items-center justify-between border-t border-accent py-5 font-mono text-xs">
+  <span>© {new Date().getFullYear()} TanokuRukushi</span>
+  <div class="flex items-center gap-4">
+    {
+      snsLinks.map(({ href, label }) => (
+        <a href={href} rel="me">
+          {label}
+        </a>
+      ))
+    }
+  </div>
+</footer>

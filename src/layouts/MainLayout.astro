@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import type { ComponentProps } from 'astro/types';
+
+type Props = ComponentProps<typeof BaseLayout>;
+---
+
+<BaseLayout {...Astro.props}>
+  <div class="mx-auto flex min-h-dvh max-w-3xl flex-col px-4">
+    <SiteHeader />
+    <div class="flex-1">
+      <slot />
+    </div>
+    <SiteFooter />
+  </div>
+</BaseLayout>
