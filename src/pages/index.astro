@@ -1,5 +1,47 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
+import Tag from '@/components/Tag.astro';
+import { getPublishedBlogEntries } from '@/lib/content';
+import { formatDate } from '@/lib/format';
+
+const posts = await getPublishedBlogEntries();
+const description = 'TanokuRukushiのウェブサイトです。日々の経験や思考をここに記録します。';
 ---
 
-<MainLayout />
+<MainLayout description={description}>
+  <h1 class="sr-only">Index</h1>
+  <p class="my-8 leading-loose">{description}</p>
+  {
+    posts.length > 0 ? (
+      <ol class="my-12 space-y-12">
+        {posts.map(({ id, data }) => (
+          <li class="grid-cols-[auto_1fr] grid-rows-[auto_1fr] gap-x-8 gap-y-2 sm:grid">
+            <div class="row-span-2 grid grid-rows-subgrid">
+              <div class="flex items-center gap-1.5 font-mono text-xs text-fg-muted">
+                <span class="size-[0.5em] flex-none rounded-xs bg-accent" aria-hidden="true" />
+                <span class="sr-only">公開日</span>
+                <time datetime={data.createdAt.toISOString()}>{formatDate(data.createdAt)}</time>
+              </div>
+            </div>
+            <div class="row-span-2 grid grid-rows-subgrid">
+              <h2 class="my-1.5 text-lg font-bold sm:my-0">
+                <a href={`/blog/${id}`}>{data.title}</a>
+              </h2>
+              <div>
+                <p class="mb-2 text-sm leading-relaxed text-fg-muted">{data.description}</p>
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="sr-only">タグ</span>
+                  {data.tags.map((tag) => (
+                    <Tag name={tag} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    ) : (
+      <p>まだ投稿がありません。</p>
+    )
+  }
+</MainLayout>
