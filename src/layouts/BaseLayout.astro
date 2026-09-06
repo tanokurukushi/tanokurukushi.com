@@ -4,9 +4,10 @@ import '@/styles/index.css';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title: titleProp, description } = Astro.props;
+const { title: titleProp, description, noindex } = Astro.props;
 
 const siteName = 'TanokuRukushi';
 const title = titleProp ? `${titleProp} - ${siteName}` : siteName;
@@ -20,6 +21,7 @@ const title = titleProp ? `${titleProp} - ${siteName}` : siteName;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex" />}
   </head>
   <body>
     <slot />
