@@ -1,0 +1,14 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+
+const description =
+  'お探しのページは見つかりませんでした。URLが間違っているか、ページが削除された可能性があります。';
+---
+
+<MainLayout title="404 Not Found" description={description} noindex>
+  <div class="my-16 flex flex-col items-center gap-6">
+    <h1 class="text-6xl font-bold text-accent">404</h1>
+    <p>{description}</p>
+    <a href="/">一覧に戻る</a>
+  </div>
+</MainLayout>
