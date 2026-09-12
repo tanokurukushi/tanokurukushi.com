@@ -20,7 +20,14 @@ const { Content } = await render(post);
 const { data } = post;
 ---
 
-<MainLayout title={data.title} description={data.description}>
+<MainLayout
+  title={data.title}
+  description={data.description}
+  type="article"
+  publishedTime={data.createdAt}
+  modifiedTime={data.updatedAt}
+  articleTags={data.tags}
+>
   <article class="py-8">
     <div class="mb-10">
       <div class="mb-3 flex items-center gap-3 font-mono text-xs text-fg-muted">
