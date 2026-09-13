@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # Cloudflare
 .wrangler/
+
+# contents
+src/content/
