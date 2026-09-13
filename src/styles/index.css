@@ -2,8 +2,7 @@
 @import './prose.css';
 
 @theme {
-  --font-body:
-    'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans CJK JP', sans-serif;
+  --font-body: 'Hiragino Sans', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif;
   --font-mono:
     ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 
@@ -40,8 +39,9 @@
   }
 
   code,
-  pre {
-    font-family: var(--font-code);
+  pre,
+  kbd {
+    font-family: var(--font-mono);
   }
 
   :focus-visible {
